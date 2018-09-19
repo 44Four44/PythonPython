@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="879c03eb-c988-4a3e-8902-a10061543659" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Khan Academy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ML.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scikit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tens.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pi.py" beforeDir="false" afterPath="$PROJECT_DIR$/pi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Khan Academy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Khan Academy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,13 +40,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="50" />
-          <entry key="py" value="8329" />
+          <entry key="py" value="8879" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="8368" />
+          <entry key="Python" value="8918" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -71,16 +66,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Khan Academy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="199" column="38" lean-forward="true" selection-start-line="199" selection-start-column="38" selection-end-line="199" selection-end-column="38" />
+            <state relative-caret-position="484">
+              <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
               <folding>
-                <element signature="e#351#364#0" expanded="true" />
-                <marker date="1537289095504" expanded="true" signature="1151:1426" ph="..." />
-                <marker date="1537289095504" expanded="true" signature="2467:2472" ph="..." />
-                <marker date="1537289095504" expanded="true" signature="4335:4340" ph="..." />
-                <marker date="1537289095504" expanded="true" signature="5068:5073" ph="..." />
-                <marker date="1537289095504" expanded="true" signature="5068:5798" ph="..." />
-                <marker date="1537289095504" expanded="true" signature="5597:5798" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="1239:1534" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="2711:2716" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="4537:4542" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="5301:5306" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="5301:6735" ph="..." />
+                <marker date="1537380365337" expanded="true" signature="6470:6735" ph="..." />
               </folding>
             </state>
           </provider>
@@ -119,6 +113,23 @@
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1366" />
     <option name="height" value="768" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyRedeclarationInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -294,14 +305,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48931623" visible="true" weight="0.24981412" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48931623" visible="true" weight="0.24981412" />
       <window_info id="Structure" order="1" sideWeight="0.5106838" side_tool="true" weight="0.24981412" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295129" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295129" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39971346" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -403,16 +413,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Khan Academy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="199" column="38" lean-forward="true" selection-start-line="199" selection-start-column="38" selection-end-line="199" selection-end-column="38" />
+        <state relative-caret-position="484">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
           <folding>
-            <element signature="e#351#364#0" expanded="true" />
-            <marker date="1537289095504" expanded="true" signature="1151:1426" ph="..." />
-            <marker date="1537289095504" expanded="true" signature="2467:2472" ph="..." />
-            <marker date="1537289095504" expanded="true" signature="4335:4340" ph="..." />
-            <marker date="1537289095504" expanded="true" signature="5068:5073" ph="..." />
-            <marker date="1537289095504" expanded="true" signature="5068:5798" ph="..." />
-            <marker date="1537289095504" expanded="true" signature="5597:5798" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="1239:1534" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="2711:2716" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="4537:4542" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="5301:5306" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="5301:6735" ph="..." />
+            <marker date="1537380365337" expanded="true" signature="6470:6735" ph="..." />
           </folding>
         </state>
       </provider>

@@ -9,23 +9,24 @@
 # -----------------------------------------------------------------------------
 
 import random
-import time
 
-# list of different praises
+# List of different praises
 praises = ["Wow! You are a natural!", "Your IQ is above 100!", "Immaculate!", "Egregious!", "Delicious!",
-           "Albert Einstein would be jealous!", "You have a big brain!"]
+           "Albert Einstein would be jealous!", "You have a big brain!", "You would even pass Dunne's class!"]
 
-# list of difficulties
+# List of difficulties
 difficulties = ['easy', 'medium', 'hard']
 
-# list of problem types
-problem_types = ['addition', 'subtraction', 'multiplication']
-print("Welcome to Khan Academy!")
+# List of problem types
+problem_types = ['addition', 'subtraction', 'multiplication', 'division']
 
-# current difficulty level
+# Greetings
+print("\nWelcome to Khan Academy!")
+
+# Current difficulty level
 difficulty = difficulties[0]
 
-# current problem type
+# Current problem type
 problem_type = problem_types[0]
 
 
@@ -35,17 +36,21 @@ def set_type():
 
     Changes the value of the string 'problem_type' to an item in the list 'problem_types'
 
+	Parameters
+	----------
+	None
+
 	Returns
     -------
 	str
-	returns the input if it is a valid problem type
+	    Returns the input if it is a valid problem type
 
     """
 
-    setp = input("\nSelect a type of problem: addition, subtraction, multiplication\n")
+    setp = input("\nSelect a type of problem: addition, subtraction, multiplication, division\n")
     while setp not in problem_types:
         print("\nThat is not an option!")
-        setp = input("Select a type of problem: addition, subtraction, multiplication\n")
+        setp = input("Select a type of problem: addition, subtraction, multiplication, division\n")
     return setp
 
 
@@ -55,10 +60,14 @@ def set_dif():
 
     Changes the value of the string 'difficulty' to an item in the list 'difficulties'
 
+	Parameters
+	----------
+	None
+
 	Returns
     -------
 	str
-	returns the input if it is a valid difficulty
+	    Returns the input if it is a valid difficulty
 
     """
 
@@ -81,18 +90,24 @@ def problem(question, correct_answer):
 	correct_answer : float
 	    The correct answer of the problem
 
+	Returns
+    -------
+    None
+
+	Raises
+	------
+	ValueError
+	    If the value of increase is not a float and it is trying to convert it into a float
+
     """
 
-    # asks the inputted question
+    # Asks the inputted question
     answer = input(question)
 
-    # begin timer
-    start_time = time.time()
-
-    # checks for difficulty or problem type change
+    # Checks for difficulty or problem type change
     navigate(answer)
 
-    # list of previous answers for question
+    # List of previous answers for question
     answers = [answer]
     while float(answer) != correct_answer:
         # 1 answer
@@ -111,22 +126,17 @@ def problem(question, correct_answer):
             print(" are incorrect!")
         print("Try again.")
 
-        # next inputted answer
+        # Next inputted answer
         answer = input(question)
 
-        # checks for difficulty or problem type change
+        # Checks for difficulty or problem type change
         navigate(answer)
 
-        # adds answer to list
+        # Adds answer to list
         answers.append(answer)
 
-    # end timer
-    end_time = time.time()
-
-    # random praise upon getting the correct answer
+    # Random praise upon getting the correct answer
     print(random.choice(praises))
-
-    print("Time: " + str((end_time - start_time)/(10**9)))
 
 
 def addition(dif):
@@ -139,9 +149,13 @@ def addition(dif):
 	dif : str
 	    Placeholder for 'difficulty'
 
+	Returns
+    -------
+    None
+
     """
 
-    # largeness of numbers based on difficulty
+    # Largeness of numbers based on difficulty
     x = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
     y = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
 
@@ -158,9 +172,13 @@ def subtraction(dif):
 	dif : str
 	    Placeholder for 'difficulty'
 
+	Returns
+    -------
+    None
+
     """
 
-    # largeness of numbers based on difficulty
+    # Largeness of numbers based on difficulty
     if dif == difficulties[0]:
         x = int(random.uniform(0, 99))
         y = x + int(random.uniform(0, 99))
@@ -181,13 +199,40 @@ def multiplication(dif):
 	dif : str
 	    Placeholder for 'difficulty'
 
+	Returns
+    -------
+    None
+
     """
 
-    # largeness of numbers based on difficulty
+    # Largeness of numbers based on difficulty
     x = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 1) - 1)
     y = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
 
     problem("\nWhat is " + str(x) + " * " + str(y) + " ?\n", x * y)
+
+
+def division(dif):
+    """
+    Generates a division problem based on the difficulty and generates 2 random integers,
+    then asks the problem by calling the function 'problem()'
+
+    Parameters
+	----------
+	dif : str
+	    Placeholder for 'difficulty'
+
+	Returns
+    -------
+    None
+
+    """
+
+    # Largeness of numbers based on difficulty
+    x = random.randint(10 ** (difficulties.index(dif)), 10 ** (difficulties.index(dif) + 1) - 1)
+    y = x * random.randint(10 ** (difficulties.index(dif)), 10 ** (difficulties.index(dif) + 1) - 1)
+
+    problem("\nWhat is " + str(y) + " / " + str(x) + " ?\n", y / x)
 
 
 def ask_type(prob):
@@ -199,6 +244,10 @@ def ask_type(prob):
 	prob : str
 	    Placeholder for 'problem_type'
 
+	Returns
+    -------
+    None
+
     """
 
     if prob == problem_types[0]:
@@ -207,28 +256,34 @@ def ask_type(prob):
         subtraction(difficulty)
     elif prob == problem_types[2]:
         multiplication(difficulty)
+    elif prob == problem_types[3]:
+        division(difficulty)
 
 
 def navigate(inp):
     """
-    Checks if at any point in time, the user wishes to change the difficulty or the type of problem by typing an item
-    from the lists 'difficulties' or 'problem_types'
+    Checks if at any point in time, the user wishes to change the difficulty or the type
+    of problem by typing an item from the lists 'difficulties' or 'problem_types'
 
     Parameters
     ----------
     inp : str
         The previously inputted answer for a problem
 
+    Returns
+    -------
+    None
+
     """
 
-    # difficulty change
+    # Difficulty change
     if inp in difficulties:
         global difficulty
         difficulty = inp
         print("\nDifficulty changed to " + inp + ".")
         start()
 
-    # problem type change
+    # Problem type change
     if inp in problem_types:
         global problem_type
         problem_type = inp
@@ -241,17 +296,20 @@ def start():
     """
     Executes the problems
 
+	Parameters
+	----------
+	None
+
+    Returns
+    -------
+    None
+
     """
 
     while True:
         ask_type(problem_type)
 
-
-# sets the type of problem
+# Execute code
 problem_type = set_type()
-
-# sets the difficulty
 difficulty = set_dif()
-
-# starts asking problems
 start()
