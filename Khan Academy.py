@@ -29,6 +29,65 @@ difficulty = difficulties[0]
 # Current problem type
 problem_type = problem_types[0]
 
+class Account:
+    """
+    An account that stores the user's progress
+
+    Attributes
+    ----------
+    answered : int list
+        The total number of completed problems for each problem type
+    attempts : int list
+        The total number of attempts for each problem type
+
+    Methods
+    -------
+    addAnswered(type : str) -> None
+        Increases the number of answered problems for a specific problem type by one
+    addAttempts(type : str) -> None
+        Increases the number of attempted problems for a specific problem type by one
+
+    """
+
+    def __init__(self, answered, attempts):
+        """
+        Constructor to build a Khan Academy account
+
+
+        Parameters
+        ----------
+        answered : int list
+            An integer list of the total amount of answered problems for each problem type (index)
+        attempts : int list
+            An integer list of the total amount of answered problems for each problem type (index)
+
+	    Returns
+        -------
+        None
+
+        """
+
+        self.answered = answered
+        self.attempts = attempts
+
+    def addAnswered(self, type):
+        """
+        Increases the number of answered problems for a specific problem type by one and updates it on the data file
+
+
+        Parameters
+        ----------
+        type : str
+            The problem type that was answered
+
+        Returns
+        -------
+        None
+
+        """
+
+
+
 
 def set_type():
     """
