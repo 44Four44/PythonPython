@@ -1,92 +1,33 @@
-# -----------------------------------------------------------------------------
-# Name:        Khan Academy (python.py)
-# Purpose:     To help students improve on their arithmetic skills
-#
-#
-# Author:      Ethan Wang
-# Created:     5-Sep-2018
-# Updated:     17-Sep-2018
-# -----------------------------------------------------------------------------
-
+from account import *
 import random
 
-# List of different praises
-praises = ["Wow! You are a natural!", "Your IQ is above 100!", "Immaculate!", "Egregious!", "Delicious!",
-           "Albert Einstein would be jealous!", "You have a big brain!", "You would even pass Dunne's class!"]
-
-# List of difficulties
-difficulties = ['easy', 'medium', 'hard']
-
-# List of problem types
-problem_types = ['addition', 'subtraction', 'multiplication', 'division']
-
-# Greetings
-print("\nWelcome to Khan Academy!")
-
-# Current difficulty level
-difficulty = difficulties[0]
-
-# Current problem type
-problem_type = problem_types[0]
-
-class Account:
+def create_accounts():
     """
-    An account that stores the user's progress
+    Reads the data file and sets up all of the existing accounts an object under the class 'accounts'
 
-    Attributes
+
+    Parameters
     ----------
-    answered : int list
-        The total number of completed problems for each problem type
-    attempts : int list
-        The total number of attempts for each problem type
+    None
 
-    Methods
+    Returns
     -------
-    addAnswered(type : str) -> None
-        Increases the number of answered problems for a specific problem type by one
-    addAttempts(type : str) -> None
-        Increases the number of attempted problems for a specific problem type by one
+    None
 
     """
+    # opens text file
+    file = open(file_path, 'r')
+    data = file.readlines()
 
-    def __init__(self, answered, attempts):
-        """
-        Constructor to build a Khan Academy account
+    # creates accounts
+    i = int(data[0])
+    answered = [0, 0, 0, 0, 0]
+    attempts = [0, 0, 0, 0, 0]
+    for x in range(0, 5):
+        answered[x] = data[i + 2 + x]
+        attempts[x] = data[i + 7 + x]
 
-
-        Parameters
-        ----------
-        answered : int list
-            An integer list of the total amount of answered problems for each problem type (index)
-        attempts : int list
-            An integer list of the total amount of answered problems for each problem type (index)
-
-	    Returns
-        -------
-        None
-
-        """
-
-        self.answered = answered
-        self.attempts = attempts
-
-    def addAnswered(self, type):
-        """
-        Increases the number of answered problems for a specific problem type by one and updates it on the data file
-
-
-        Parameters
-        ----------
-        type : str
-            The problem type that was answered
-
-        Returns
-        -------
-        None
-
-        """
-
-
+    accounts.append(Account(i, data[i+1], answered, attempts))
 
 
 def set_type():
@@ -137,7 +78,7 @@ def set_dif():
     return setd
 
 
-def problem(question, correct_answer):
+def problem(question, correct_answer, type):
     """
     Asks a problem and checks for the correct answer of the problem
 
@@ -148,6 +89,8 @@ def problem(question, correct_answer):
 	    'subtraction()', 'multiplication()', and 'division()'
 	correct_answer : float
 	    The correct answer of the problem
+	type : int
+	    The type of problem as the index of 'problem_types'
 
 	Returns
     -------
@@ -183,7 +126,10 @@ def problem(question, correct_answer):
                 else:
                     print(answers[i] + ", ", end='')
             print(" are incorrect!")
+
         print("Try again.")
+        # +1 on attempted problems and total attempts for this account
+        accounts[active].addAttempts(type)
 
         # Next inputted answer
         answer = input(question)
@@ -197,6 +143,9 @@ def problem(question, correct_answer):
     # Random praise upon getting the correct answer
     print(random.choice(praises))
 
+    # +1 on solved problems and total answered for this account and attempts/total attempts
+    accounts[active].addAnswered(type)
+    accounts[active].addAttempts(type)
 
 def addition(dif):
     """
@@ -218,7 +167,7 @@ def addition(dif):
     x = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
     y = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
 
-    problem("\nWhat is " + str(x) + " + " + str(y) + " ?\n", x + y)
+    problem("\nWhat is " + str(x) + " + " + str(y) + " ?\n", x + y, 0)
 
 
 def subtraction(dif):
@@ -245,7 +194,7 @@ def subtraction(dif):
         x = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
         y = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
 
-    problem("\nWhat is " + str(y) + " - " + str(x) + " ?\n", y - x)
+    problem("\nWhat is " + str(y) + " - " + str(x) + " ?\n", y - x, 1)
 
 
 def multiplication(dif):
@@ -268,7 +217,7 @@ def multiplication(dif):
     x = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 1) - 1)
     y = random.randint(10 ** (2 * difficulties.index(dif)), 10 ** (2 * difficulties.index(dif) + 2) - 1)
 
-    problem("\nWhat is " + str(x) + " * " + str(y) + " ?\n", x * y)
+    problem("\nWhat is " + str(x) + " * " + str(y) + " ?\n", x * y, 2)
 
 
 def division(dif):
@@ -291,7 +240,7 @@ def division(dif):
     x = random.randint(10 ** (difficulties.index(dif)), 10 ** (difficulties.index(dif) + 1) - 1)
     y = x * random.randint(10 ** (difficulties.index(dif)), 10 ** (difficulties.index(dif) + 1) - 1)
 
-    problem("\nWhat is " + str(y) + " / " + str(x) + " ?\n", y / x)
+    problem("\nWhat is " + str(y) + " / " + str(x) + " ?\n", y / x, 3)
 
 
 def ask_type(prob):
@@ -309,13 +258,13 @@ def ask_type(prob):
 
     """
 
-    if prob == problem_types[0]:
+    if prob =='addition':
         addition(difficulty)
-    elif prob == problem_types[1]:
+    elif prob == 'subtraction':
         subtraction(difficulty)
-    elif prob == problem_types[2]:
+    elif prob == 'multiplication':
         multiplication(difficulty)
-    elif prob == problem_types[3]:
+    elif prob == 'divisionq':
         division(difficulty)
 
 
@@ -349,7 +298,24 @@ def navigate(inp):
         print("\nProblem type changed to " + inp + ".")
         start()
 
+    # Reset user data
+    if inp == 'reset':
+        accounts[active].reset()
+        print("\nAccount data from user '" + accounts[active].name.rstrip() + "' was reset.")
+        start()
 
+    # Shows the accuracy stats of the user
+    if inp == 'stats':
+        print("\nUser '" + accounts[active].name.rstrip() + "' statistics:")
+        for i in range(0, 4):
+            print(problem_types[i].capitalize() + ": " + accounts[active].answered[i]
+                  + " Correctly Answered, " + accounts[active].attempts[i] + " Attempts, ")
+            if int(accounts[active].attempts[i]) == 0:
+                print("Accuracy = null")
+            else:
+                print(str(int(accounts[active].answered[i])/int(accounts[active].attempts[i])) + "% Accuracy")
+
+        start()
 
 def start():
     """
@@ -368,7 +334,3 @@ def start():
     while True:
         ask_type(problem_type)
 
-# Execute code
-problem_type = set_type()
-difficulty = set_dif()
-start()
