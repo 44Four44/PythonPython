@@ -21,8 +21,8 @@ def create_accounts():
 
     # creates accounts
     i = int(data[0])
-    answered = [0, 0, 0, 0, 0]
-    attempts = [0, 0, 0, 0, 0]
+    answered = ['0', '0', '0', '0', '0']
+    attempts = ['0', '0', '0', '0', '0']
     for x in range(0, 5):
         answered[x] = data[i + 2 + x]
         attempts[x] = data[i + 7 + x]
@@ -301,20 +301,28 @@ def navigate(inp):
     # Reset user data
     if inp == 'reset':
         accounts[active].reset()
-        print("\nAccount data from user '" + accounts[active].name.rstrip() + "' was reset.")
+        print("\n*****************************************")
+        print("Account data from user '" + accounts[active].name.rstrip() + "' was reset.")
+        print("*****************************************")
+
         start()
 
     # Shows the accuracy stats of the user
     if inp == 'stats':
-        print("\nUser '" + accounts[active].name.rstrip() + "' statistics:")
-        for i in range(0, 4):
-            print(problem_types[i].capitalize() + ": " + accounts[active].answered[i]
-                  + " Correctly Answered, " + accounts[active].attempts[i] + " Attempts, ")
-            if int(accounts[active].attempts[i]) == 0:
-                print("Accuracy = null")
-            else:
-                print(str(int(accounts[active].answered[i])/int(accounts[active].attempts[i])) + "% Accuracy")
+        print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("User '" + accounts[active].name.strip() + "' statistics:")
 
+        # Spacing to format the stats so they align
+        spaces = ['        ', '     ', '  ', '        ']
+        for i in range(0, 4):
+            print(problem_types[i].capitalize() + ":" + spaces[i] + accounts[active].answered[i].strip()
+                  + " Correctly Answered, " + accounts[active].attempts[i].strip() + " Attempts, ", end='')
+            if int(accounts[active].attempts[i]) == 0:
+                print("NA% Accuracy")
+            else:
+                print(str(int(round(int(accounts[active].answered[i])/int(accounts[active].attempts[i])*100, 0)))
+                      + "% Accuracy")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         start()
 
 def start():

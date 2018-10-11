@@ -158,9 +158,12 @@ class Account:
         # Set values to 0
         for i in range (2, 12):
             data[self.index + i] = '0\n'
+        self.answered = ['0', '0', '0', '0', '0']
+        self.attempts = ['0', '0', '0', '0', '0']
 
         # Writes everything back
         with open(file_path, 'w') as file:
             file.writelines(data)
+
 
 
