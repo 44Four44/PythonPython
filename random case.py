@@ -4,12 +4,28 @@ from pynput.keyboard import Key, Controller, Listener
 import time
 import click
 from pyglet.window import key
+import keyboard
 
-window = pyglet.window.Window()
+import tkinter
 
-@window.event
-def on_key_press(symbol, modifiers):
-    if symbol == pyglet.window.key.A:
-        print("A was pressed")
+import keyboard
 
-pyglet.app.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

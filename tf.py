@@ -1,21 +1,23 @@
-class Beans:
-    def __init__(self, liste):
-        '''
-        Constructor to build a book object
+from pynput import keyboard
 
+def on_press(key):
+    try:
+        print('alphanumeric key {0} pressed'.format(
+            key.char))
+    except AttributeError:
+        print('special key {0} pressed'.format(
+            key))
 
-        Parameters
-        ----------
+def on_release(key):
+    print('{0} released'.format(
+        key))
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False
 
-        liste : int list
-        	The initial price of the book
-        '''
+# Collect events until released
+with keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    listener.join()
 
-
-        self.beancount = liste
-
-
-b = [1, 3, 10, 2]
-
-ethan = Beans(b)
-print(ethan.beancount[2])
